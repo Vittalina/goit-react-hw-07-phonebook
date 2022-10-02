@@ -3,8 +3,9 @@ import React from 'react';
 import { nanoid } from 'nanoid';
 import { ListItem, Button } from 'components/Contacts/Contacts.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from 'redux/actions';
+// import { deleteContact } from 'redux/actions';
 import { selectContacts, selectSetFilter } from 'redux/selectors';
+import { deleteContact } from 'redux/operations';
 
 const Contacts = () => {
   const dispatch = useDispatch();

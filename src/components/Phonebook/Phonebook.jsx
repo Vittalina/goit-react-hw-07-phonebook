@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { nanoid } from 'nanoid/non-secure';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/actions';
+// import { addContact } from 'redux/actions';
 import { selectContacts } from 'redux/selectors';
 import {
   FormField,
@@ -9,6 +9,7 @@ import {
   Label,
   Button,
 } from 'components/Phonebook/Phonebook.styled';
+import { addContact } from 'redux/operations';
 
 const Phonebook = () => {
   const [name, setName] = useState('');
