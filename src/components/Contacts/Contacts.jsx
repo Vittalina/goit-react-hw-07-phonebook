@@ -32,7 +32,6 @@ const Contacts = () => {
             type="button"
             id={contact.number}
             onClick={() => dispatch(deleteContact(contact.id))}
-            // onClick={() => onClickDelete(contact.id)}
           >
             Delete
           </Button>
