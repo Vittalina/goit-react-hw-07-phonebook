@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { nanoid } from 'nanoid/non-secure';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/actions';
+import { selectContacts } from 'redux/selectors';
 import {
   FormField,
   Input,
@@ -13,7 +14,7 @@ const Phonebook = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts.items);
+  const contacts = useSelector(selectContacts);
 
   const handleChange = e => {
     switch (e.currentTarget.name) {

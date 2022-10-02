@@ -4,13 +4,14 @@ import { nanoid } from 'nanoid';
 import { ListItem, Button } from 'components/Contacts/Contacts.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from 'redux/actions';
+import { selectContacts, selectSetFilter } from 'redux/selectors';
 
 const Contacts = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts.items);
+  const contacts = useSelector(selectContacts);
   console.log(contacts);
 
-  const filter = useSelector(state => state.filters);
+  const filter = useSelector(selectSetFilter);
   console.log(filter);
 
   const normalizedFilter = filter.toLowerCase();

@@ -19,6 +19,5 @@ const filtersInitialState = '';
 export const filtersReducer = createReducer(filtersInitialState, {
   [setFilter]: (state, action) => {
     return action.payload;
-    // state.filter = action.payload;
   },
 });
