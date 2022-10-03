@@ -1,19 +1,17 @@
 import { useState } from 'react';
-import { nanoid } from 'nanoid/non-secure';
 import { useDispatch, useSelector } from 'react-redux';
-// import { addContact } from 'redux/actions';
 import { selectContacts } from 'redux/selectors';
+import { addContact } from 'redux/operations';
 import {
   FormField,
   Input,
   Label,
   Button,
 } from 'components/Phonebook/Phonebook.styled';
-import { addContact } from 'redux/operations';
 
 const Phonebook = () => {
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [phone, setPhone] = useState('');
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
 
@@ -23,7 +21,7 @@ const Phonebook = () => {
         setName(e.currentTarget.value);
         break;
       case 'number':
-        setNumber(e.currentTarget.value);
+        setPhone(e.currentTarget.value);
         break;
       default:
         return;
@@ -32,23 +30,22 @@ const Phonebook = () => {
 
   const reset = () => {
     setName('');
-    setNumber('');
+    setPhone('');
   };
 
   const formSubmitHandle = data => {
-    const id = nanoid();
     if (contacts.filter(contact => contact.name === data.name).length > 0) {
       alert(`${data.name} is already in contacts`);
       return;
     }
-    data.id = id;
 
     dispatch(addContact(data));
+    console.log(data);
   };
 
   const clickOnBtnSubmit = e => {
     e.preventDefault();
-    formSubmitHandle({ name, number });
+    formSubmitHandle({ name, phone });
     reset();
   };
 
@@ -71,7 +68,7 @@ const Phonebook = () => {
         <Input
           type="tel"
           name="number"
-          value={number}
+          value={phone}
           onChange={handleChange}
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
